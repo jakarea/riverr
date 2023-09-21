@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Mail\User\Buyer;
+namespace App\Mail\Buyer;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ProjectCreated extends Mailable implements ShouldQueue
+class ProjectCreationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,10 @@ class ProjectCreated extends Mailable implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    public $project;
+    public function __construct($project)
     {
-        //
+        $this->project = $project;
     }
 
     /**
@@ -29,8 +30,8 @@ class ProjectCreated extends Mailable implements ShouldQueue
     public function build()
     {
         // Set subject
-        $subject = __('Project Created');
+        $subject = "New project created";
 
-        return $this->markdown('mail.user.buyer.create')->subject($subject);
+        return $this->view('mail.user.buyer.projectCreated')->subject($subject);
     }
 }

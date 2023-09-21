@@ -1,8 +1,10 @@
 <?php
- 
+
 namespace App\Http\Controllers\Main\Post\Project;
 
-use Mail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Buyer\ProjectCreationMail;
+
 use App\Models\Project;
 use App\Models\ProjectPlan;
 use Illuminate\Support\Str;
@@ -16,7 +18,7 @@ use App\Models\ProjectRequiredSkill;
 use Illuminate\Support\Facades\View;
 use App\Http\Requests\Main\Post\ProjectRequest;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
-// use App\Mail\User\Buyer\ProjectCreated;
+
 use App\Mail\User\Everyone\NewsletterVerification as EveryoneNewsletterVerification;
 
 class ProjectController extends Controller
@@ -198,8 +200,8 @@ class ProjectController extends Controller
                 $project->save();
 
                 // Send email for create project
-                // Mail::to($user->email)->send(new ProjectCreated());
-
+                Mail::to($user->email)->send(new ProjectCreationMail($project));
+                
                 // Create a subscription if user selected premium posting
                 if ($settings->is_premium_posting && is_array($request->get('plans', [])) && count($request->get('plans', []))) {
                     
