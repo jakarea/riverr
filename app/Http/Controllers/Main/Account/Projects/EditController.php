@@ -2,6 +2,9 @@
  
 namespace App\Http\Controllers\Main\Account\Projects;
  
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Buyer\ProjectUpdatedMail;
+
 use App\Models\Project;
 use App\Models\ProjectPlan;
 use Illuminate\Support\Str;
@@ -184,6 +187,8 @@ class EditController extends Controller
                 $project->is_alert       = $premium['is_alert'] ?? $project->is_alert;
                 $project->status         = $status;
                 $project->save();
+
+                Mail::to($user->email)->send(new ProjectUpdatedMail($project));
 
                 // Create a subscription if user selected premium posting
                 if ($settings->is_premium_posting && is_array($request->get('plans', [])) && count($request->get('plans', []))) {
