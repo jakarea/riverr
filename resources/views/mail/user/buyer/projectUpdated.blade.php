@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Project Created</title>
+    <title>Project Updated</title>
 
     <style>
         body{
@@ -13,10 +13,10 @@
 </head>
 <body>
  
-        <table cellpadding="0" cellspacing="0" border="0" style="background: aliceblue; min-width: 630px; width: 100%; padding-top: 1rem; font-family: Arial, Helvetica, sans-serif">
+        <table cellpadding="0" cellspacing="0" border="0" style="border-radius: 10px 10px 0 0; background: aliceblue; min-width: 630px;  width: 100%; padding-top: 1rem; font-family: Arial, Helvetica, sans-serif">
             <tr>
                 <th style="background: #4f46e5; border-radius: 10px 10px 0 0; padding: 10px 2rem;"  style="width: 100%">
-                    <h1 style="color: #fff">Project Created</h1> 
+                    <h1 style="color: #fff">Project Updated</h1> 
                 </th>
             </tr>
             <tr>
@@ -53,7 +53,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: center" colspan="2">
-                                <h5>Created at: {{$project->created_at}}</h5>
+                                <h5>Updated at: {{$project->updated_at}}</h5>
                             </td>
                         </tr>
                     </table>

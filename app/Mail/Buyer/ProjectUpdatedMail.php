@@ -17,6 +17,7 @@ class ProjectUpdatedMail extends Mailable
      * @return void
      */
     public $project;
+
     public function __construct($project)
     {
         $this->project = $project;
@@ -30,7 +31,7 @@ class ProjectUpdatedMail extends Mailable
     public function build()
     {
         // Set subject
-        $subject = "New project created";
+        $subject = "Project Updated";
 
         return $this->view('mail.user.buyer.projectUpdated')->subject($subject);
     }
