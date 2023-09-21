@@ -80,7 +80,7 @@ class EditComponent extends Component
             'bid_amount'      => $bid->amount,
             'bid_amount_paid' => $bid_amount_paid,
             'bid_days'        => $bid->days,
-            'bid_description' => $bid->message
+            'bid_description' => $bid->message ."Bid message 2"
         ]);
 
         // Check if user can promote this bid
