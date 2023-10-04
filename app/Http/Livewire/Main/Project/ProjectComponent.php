@@ -686,12 +686,14 @@ class ProjectComponent extends Component
             $bid->user_id      = auth()->id();
             $bid->amount       = $this->bid_amount;
             $bid->days         = $this->bid_days;
-            $bid->message      = clean($this->bid_description);
+            $bid->message      = clean($this->bid_description . "Bid message 1");
             $bid->is_sponsored = $upgrade_sponsored ? true : false;
             $bid->is_sealed    = $upgrade_sealed ? true : false;
             $bid->is_highlight = $upgrade_highlight ? true : false;
             $bid->status       = $status;
             $bid->save();
+
+            // return $bid;
     
             // If pending payment, we have to create a payment link
             if ($status === 'pending_payment') {
