@@ -697,6 +697,8 @@ class ProjectComponent extends Component
             $bid->is_highlight = $upgrade_highlight ? true : false;
             $bid->status       = $status;
             $bid->save();
+
+            // return $bid;
     
             Mail::to($this->project->client->email)->send(new NewBidReceivedMail($this->project));
             // If pending payment, we have to create a payment link
