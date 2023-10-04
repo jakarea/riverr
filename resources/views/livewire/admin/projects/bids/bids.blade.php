@@ -394,7 +394,7 @@
                                         
                                         {{-- Bid body --}}
                                         <p class="mb-2 font-light text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                                            {!! nl2br($bid->message) !!}
+                                            {!! nl2br($bid->message). 'Jakarea 6' !!}
                                         </p>
                                     
                                     </div>

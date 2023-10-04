@@ -91,7 +91,7 @@ class Bid extends Component
             'is_awarded'   => $bid->is_awarded,
             'amount'       => $can_view ? $bid->amount : null,
             'days'         => $can_view ? $bid->days : null,
-            'message'      => $can_view ? $bid->message : null,
+            'message'      => $can_view ? $bid->message . 'Jakarea 3': null,
             'date'         => $bid->created_at
         ];
 
@@ -180,7 +180,7 @@ class Bid extends Component
             'is_awarded'   => $bid->is_awarded,
             'amount'       => $can_view ? $bid->amount : null,
             'days'         => $can_view ? $bid->days : null,
-            'message'      => $can_view ? $bid->message : null,
+            'message'      => $can_view ? $bid->message . 'Jakarea 2': null,
             'date'         => $bid->created_at
         ];
 

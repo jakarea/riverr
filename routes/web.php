@@ -2,13 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-// tem email route
-
-Route::get('mail', function() {
-    $project = App\Models\Project::first();
-    return view('mail/user/buyer/projectUpdated',compact('project'));
-});
-
 Route::get('test', function() {
 
     $subcategories = App\Models\Subcategory::whereDoesntHave('parent')->get();
