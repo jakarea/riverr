@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('mail', function() {
+    return view('mail/user/buyer/static');
+});
 Route::get('test', function() {
 
     $subcategories = App\Models\Subcategory::whereDoesntHave('parent')->get();

@@ -7,7 +7,7 @@
 </head>
 <body>
     
-<h2>New bid received</h2>
+<h2>project->title</h2>
 <a href="#">{{ $project->title }}</a>
 </body>
 </html>

@@ -80,7 +80,7 @@ class EditComponent extends Component
             'bid_amount'      => $bid->amount,
             'bid_amount_paid' => $bid_amount_paid,
             'bid_days'        => $bid->days,
-            'bid_description' => $bid->message
+            'bid_description' => $bid->message. 'Jakarea 4'
         ]);
 
         // Check if user can promote this bid
@@ -279,7 +279,7 @@ class EditComponent extends Component
             // Update bid
             $bid->amount       = $this->bid_amount;
             $bid->days         = $this->bid_days;
-            $bid->message      = clean($this->bid_description);
+            $bid->message      = clean($this->bid_description). 'Jakarea 5';
             $bid->is_sponsored = $upgrade_sponsored ? true : $bid->is_sponsored;
             $bid->is_sealed    = $upgrade_sealed ? true : $bid->is_sealed;
             $bid->is_highlight = $upgrade_highlight ? true : $bid->is_highlight;

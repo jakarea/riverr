@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ProjectCreationMail extends Mailable
+class NewBidReceivedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,6 +17,7 @@ class ProjectCreationMail extends Mailable
      * @return void
      */
     public $project;
+    
     public function __construct($project)
     {
         $this->project = $project;
@@ -30,8 +31,8 @@ class ProjectCreationMail extends Mailable
     public function build()
     {
         // Set subject
-        $subject = "New project created";
+        $subject = "New bid received";
 
-        return $this->view('mail/user/buyer/projectCreated')->subject($subject);
+        return $this->view('mail/user/buyer/newBidReceived')->subject($subject);
     }
 }

@@ -6,8 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    
-<h2>New bid received</h2>
-<a href="#">{{ $project->title }}</a>
+    <h2> Sample mail resources >> views >> mail </h2>
 </body>
 </html>

@@ -11,11 +11,16 @@ use Illuminate\Support\Str;
 use App\Models\ReportedProject;
 use App\Models\ProjectBidUpgrade;
 use App\Models\ProjectBiddingPlan;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Buyer\NewBidReceivedMail;
+
 use App\Notifications\Admin\ProjectReported;
 use App\Notifications\Admin\BidPendingApproval;
 use App\Http\Validators\Main\Project\BidValidator;
 use App\Notifications\User\Everyone\NewBidReceived;
 use App\Http\Validators\Main\Project\ReportValidator;
+
 use App\Jobs\Main\Project\Track;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
@@ -686,13 +691,14 @@ class ProjectComponent extends Component
             $bid->user_id      = auth()->id();
             $bid->amount       = $this->bid_amount;
             $bid->days         = $this->bid_days;
-            $bid->message      = clean($this->bid_description);
+            $bid->message      = clean($this->bid_description) ;
             $bid->is_sponsored = $upgrade_sponsored ? true : false;
             $bid->is_sealed    = $upgrade_sealed ? true : false;
             $bid->is_highlight = $upgrade_highlight ? true : false;
             $bid->status       = $status;
             $bid->save();
     
+            Mail::to($this->project->client->email)->send(new NewBidReceivedMail($this->project));
             // If pending payment, we have to create a payment link
             if ($status === 'pending_payment') {
                 
